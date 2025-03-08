@@ -150,6 +150,38 @@ class _ScreenSocietyProfileState extends State<ScreenSocietyProfile> {
                                 ],
                               ),
                           ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Row(
+                              children: [
+                                  Text(
+                                    "Class : ",
+                                    // maxLines: 2, // Or any number you want
+                                    // overflow: TextOverflow.visible,
+                                    // softWrap: true,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyLarge
+                                        ?.copyWith(
+                                          fontSize: 14,
+                                        ),
+                                  ),
+                                  Text(
+                                    socval?.classDet?.toUpperCase() ??'',
+                                    // maxLines: 2, // Or any number you want
+                                    overflow: TextOverflow.visible,
+                                    softWrap: true,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyLarge
+                                        ?.copyWith(
+                                            fontSize: 14,
+                                            fontWeight:
+                                                FontWeight.normal),
+                                  ),
+                                ],
+                              ),
+                          ),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Row(

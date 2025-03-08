@@ -11,6 +11,7 @@ Data _$DataFromJson(Map<String, dynamic> json) => Data(
       socName: json['soc_name'] as String?,
       regNo: json['reg_no'] as String?,
       socClass: json['soc_class'] as String?,
+      classDet: json['class'] as String?,
       socType: (json['soc_type'] as num?)?.toInt(),
       socTypeName: json['soc_type_name'] as String?,
       societyCode: json['society_code'] as String?,
@@ -22,7 +23,7 @@ Data _$DataFromJson(Map<String, dynamic> json) => Data(
       talukName: json['taluk_name'] as String?,
       unitId: (json['unit_id'] as num?)?.toInt(),
       unitName: json['unit_name'] as String?,
-      imbpAmount: (json['imbp_amount'] as num?)?.toInt(),
+      imbpAmount: json['imbp_amount'] as dynamic,
       status: (json['status'] as num?)?.toInt(),
       branches: (json['branches'] as List<dynamic>?)
           ?.map((e) => Branch.fromJson(e as Map<String, dynamic>))
@@ -34,6 +35,7 @@ Map<String, dynamic> _$DataToJson(Data instance) => <String, dynamic>{
       'soc_name': instance.socName,
       'reg_no': instance.regNo,
       'soc_class': instance.socClass,
+      'class':instance.classDet,
       'soc_type': instance.socType,
       'soc_type_name': instance.socTypeName,
       'society_code': instance.societyCode,

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "600790015509",
+    "project_id": "coopconnect-3eca5",
+    "storage_bucket": "coopconnect-3eca5.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:600790015509:android:88e9248ebd039d9bf2381c",
+        "android_client_info": {
+          "package_name": "com.coopconnect.cimalite"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFrNXjdbEdZv0ka7D4ao-07zuUHGUTid0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,10 +1,17 @@
 import 'package:cimalite/core/hook/hook.dart';
+import 'package:cimalite/firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 const savekeyname = 'UserLoggedIn';
 const savesocinfo = '_userSocIn';
 const savedeviceinfo = '_userDeviceIn';
+const savedevicetkn='_userDeviceTkn';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+);
   runApp(MyApp());
 }
 
@@ -34,7 +41,7 @@ class MyApp extends StatelessWidget {
                   .copyWith(textScaler: TextScaler.noScaling),
               child: MaterialApp(
                 navigatorKey: navigatorKey,
-                title: 'CIMA Lite',
+                title: 'Co-op Connect',
                 themeMode: themeProvider.themeMode,
                 theme: themeProvider.lightScheme,
                 darkTheme: themeProvider.darkScheme,

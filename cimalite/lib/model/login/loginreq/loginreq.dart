@@ -4,11 +4,28 @@ part 'loginreq.g.dart';
 
 @JsonSerializable()
 class Loginreq {
-  @JsonKey(name: 'soc_code')
   String? socCode;
   String? password;
+  String? phone;
+  String? devicetoken;
+  String? deviceid;
+  String? phoneos;
+  String? androidid;
+  String? osversion;
+  String? appversion;
+  String? buildnumber;
 
-  Loginreq({this.socCode, this.password});
+  Loginreq({
+   this.socCode,
+   this.password,
+   this.phone,
+   this.devicetoken,
+   this.deviceid,
+   this.phoneos,
+   this.androidid,
+   this.osversion,
+   this.appversion,
+   this.buildnumber});
 
   factory Loginreq.fromJson(Map<String, dynamic> json) {
     return _$LoginreqFromJson(json);

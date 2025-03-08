@@ -332,6 +332,7 @@ class _ScreenhomeState extends State<Screenhome> {
                                       .colorScheme
                                       .secondaryFixed,
                                   onTap: () async {
+                                  launchSocURL('https://cooperation.kerala.gov.in/2019/04/11/circulars/', context);
                                    
                                   },
                                   child: Card(
@@ -375,6 +376,7 @@ class _ScreenhomeState extends State<Screenhome> {
                                       .colorScheme
                                       .secondaryFixed,
                                   onTap: () {
+                                  launchSocURL('https://cooperation.kerala.gov.in/', context);
                                     
                                   },
                                   child: Card(

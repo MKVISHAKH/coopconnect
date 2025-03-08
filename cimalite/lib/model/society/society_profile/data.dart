@@ -14,6 +14,7 @@ class Data {
   String? regNo;
   @JsonKey(name: 'soc_class')
   String? socClass;
+  String? classDet;
   @JsonKey(name: 'soc_type')
   int? socType;
   @JsonKey(name: 'soc_type_name')
@@ -35,7 +36,7 @@ class Data {
   @JsonKey(name: 'unit_name')
   String? unitName;
   @JsonKey(name: 'imbp_amount')
-  int? imbpAmount;
+  dynamic imbpAmount;
   int? status;
   List<Branch>? branches;
 
@@ -44,6 +45,7 @@ class Data {
     this.socName,
     this.regNo,
     this.socClass,
+    this.classDet,
     this.socType,
     this.socTypeName,
     this.societyCode,

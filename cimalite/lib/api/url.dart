@@ -23,4 +23,6 @@ class Url {
   String inspNoticeListUrl = '/api/society/notice/list';
   String inspNoticeUrl = '/api/society/inspection/notice';
   String socProfileUrl = '/api/society/profile';
+  String deviceInfoUrl ='/api/society/deviceinfo';
+
 }

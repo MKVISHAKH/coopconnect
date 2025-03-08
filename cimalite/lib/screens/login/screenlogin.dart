@@ -1,4 +1,5 @@
 import 'package:cimalite/core/hook/hook.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 
 class ScreenLogin extends StatefulWidget {
   const ScreenLogin({super.key});
@@ -248,10 +249,31 @@ class _ScreenLoginState extends State<ScreenLogin> {
     try {
        loadingProvider = context.read<LoadingProvider>();
 
+      FirebaseMessaging messaging=FirebaseMessaging.instance;
+      String? deviceTkn;
       loadingProvider.toggleLoading();
+    final value = await SharedPrefManager.instance.getdeviceinfo();
+    final val = await SharedPrefManager.instance.getdeviceTkn();
+    final tkn=val.devicetoken;
+    if((tkn??"").isEmpty){
+    String? token=await messaging.getToken();
+        deviceTkn=token;
+    }else{
+      deviceTkn=val.devicetoken;
+    }
       final username = _usercontroller.text;
       final password = _passcontroller.text;
-      final logreq = Loginreq(socCode: username, password: password);
+      final logreq = Loginreq(
+       socCode: username,
+       password: password,
+       phone: value.phone,
+       deviceid: value.deviceid,
+       devicetoken: deviceTkn,
+       phoneos: value.phoneos,
+       androidid: value.androidid,
+       appversion: value.appversion,
+       buildnumber: value.buildnumber
+       );
 
       final loginResponse = await Ciadata().login(logreq);
       final resultAsjson = jsonDecode(loginResponse.toString());

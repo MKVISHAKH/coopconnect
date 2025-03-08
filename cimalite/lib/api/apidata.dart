@@ -15,6 +15,7 @@ abstract class Apicalls {
   Future<dio.Response<dynamic>?> noticeListView(Inspectionlistreq value);
   Future<dio.Response<dynamic>?> dwnldNotice(String? val);
   Future<dio.Response<dynamic>?> societyProfile(Inspectionlistreq value);
+  Future<dio.Response<dynamic>?> deviceInfo(Deviceinfo value);
 
 }
 
@@ -412,6 +413,40 @@ class Ciadata extends Apicalls {
       return dio.Response(
         requestOptions: ex.requestOptions,
         statusCode: ex.response?.statusCode ?? 500, // Default to HTTP 500 if no status code
+        statusMessage: ex.message,
+        data: ex.response?.data, // Include error data if available
+      );
+    }
+  }
+  
+  @override
+  Future<dio.Response?> deviceInfo(Deviceinfo value) async{
+    final sharedValue = await SharedPrefManager.instance.getSharedData();
+    final token = sharedValue!.accesstoken;
+    try {
+      final result = await dioclient.post(url.deviceInfoUrl,
+          data: value.toJson(),
+          options: Options(responseType: ResponseType.plain, headers: {
+            "Authorization": "Bearer $token",
+            "Accept": "application/json"
+          }));
+      return result;
+    } on dio.DioException catch (ex) {
+      // Check for timeout or other errors
+      if (ex.type == DioExceptionType.connectionTimeout) {
+        // Return a custom response or throw an exception with more details
+        return dio.Response(
+          requestOptions: ex.requestOptions,
+          statusCode: 408, // HTTP 408 Request Timeout
+          statusMessage: "Connection Timeout",
+        );
+      }
+
+      // Return the error response from DioException
+      return dio.Response(
+        requestOptions: ex.requestOptions,
+        statusCode: ex.response?.statusCode ??
+            500, // Default to HTTP 500 if no status code
         statusMessage: ex.message,
         data: ex.response?.data, // Include error data if available
       );
